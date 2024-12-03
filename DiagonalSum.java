@@ -7,15 +7,15 @@ public class DiagonalSum {
         int[][] diagonalSumArray = new int[userInput][userInput];
         Set<Integer> s = new HashSet<>();
 
-        int arrayValueCounter = 0;
+        int arrayValue = 0;
         int counter = 0;
         int sum = 0;
 
         // fills array with values 
         for (int i = 0; i < diagonalSumArray.length; i++) {
             for (int j = 0; j < diagonalSumArray[i].length; j++) {
-                diagonalSumArray[i][j] = arrayValueCounter;
-                arrayValueCounter++;
+                diagonalSumArray[i][j] = arrayValue;
+                arrayValue++;
             }
         }
         // adds unique diagonal values to set 
@@ -25,7 +25,7 @@ public class DiagonalSum {
             counter++;
         }
         // sums set
-        for (int value : s) {
+        for (int value : s) {   
             sum += value;
         }
 
