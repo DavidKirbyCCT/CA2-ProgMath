@@ -1,10 +1,12 @@
+import java.util.Scanner;
+
 public class FirstRepeatedElement {
 
-    public String CheckRepeatedElement(int arrayLength, int[] input) {
-        for (int i = 0; i < arrayLength; i++) {
-            for (int j = i + 1; j < arrayLength; j++) {
+    public String CheckRepeatedElement(int[] input) {
+        for (int i = 0; i < input.length; i++) {
+            for (int j = i + 1; j < input.length; j++) {
                 if (input[i] == input[j]) {
-                    String repeatedElement = Integer.toString(input[i]);
+                    String repeatedElement = "First Repeated Element: " + Integer.toString(input[i]);
                     return repeatedElement;
                 }
             }
@@ -13,12 +15,20 @@ public class FirstRepeatedElement {
     };
 
     public static void main(String[] args) {
-        int[] inputData = {4,5,6,7,4,8,7,4,8,4,9};
-        int[] inputData2 = {1,2,3,4,5,6,7,8,9}; 
         FirstRepeatedElement obj = new FirstRepeatedElement();
+        Scanner reader = new Scanner(System.in);
 
-        System.out.println(obj.CheckRepeatedElement(inputData.length, inputData));
-        System.out.println(obj.CheckRepeatedElement(inputData2.length, inputData2));
+        System.out.println("Enter array size: ");
+        int n = reader.nextInt();
+        int[] unsortedArray = new int[n];
+
+        System.out.println("Enter Array Elements:");
+        for (int i = 0; i < unsortedArray.length; i++) {
+            int x = reader.nextInt();
+            unsortedArray[i] = x;
+        }
+
+        System.out.println(obj.CheckRepeatedElement(unsortedArray));
 
     }
 }
