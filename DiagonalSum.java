@@ -1,47 +1,42 @@
-import java.util.HashSet;
+
 import java.util.Scanner;
-import java.util.Set;
 
 public class DiagonalSum {
-    public int calculateDiagonalSum(int userInput) {
-        int[][] diagonalSumArray = new int[userInput][userInput];
-        Set<Integer> s = new HashSet<>();
-
-        int arrayValue = 0;
-        int counter = 0;
+    public int calculateDiagonalSum(int[][] arrayInput) {
         int sum = 0;
+        int j = arrayInput.length;
 
-        // fills array with values 
-        for (int i = 0; i < diagonalSumArray.length; i++) {
-            for (int j = 0; j < diagonalSumArray[i].length; j++) {
-                diagonalSumArray[i][j] = arrayValue;
-                arrayValue++;
-            }
+        for (int i = 0; i < j; i++) {
+            sum += arrayInput[i][i];
+            sum += arrayInput[i][j - 1 - i];
+            System.out.println(sum);
         }
-        // adds unique diagonal values to set 
-        for (int i = 0; i < diagonalSumArray.length; i++) {
-            s.add(diagonalSumArray[i][counter]);
-            s.add(diagonalSumArray[i][(diagonalSumArray.length - 1) - counter]);
-            counter++;
-        }
-        // sums set
-        for (int value : s) {   
-            sum += value;
+
+        if (j % 2 == 1) {
+            sum -= arrayInput[j / 2][j / 2];
         }
 
         System.out.println(sum);
         return sum;
-
     }
 
     public static void main(String[] args) {
         DiagonalSum obj = new DiagonalSum();
-        Scanner reader = new Scanner(System.in); 
+        Scanner reader = new Scanner(System.in);
 
-        System.out.println("Enter matrix size (n*n): ");
-        int n = reader.nextInt(); 
+        System.out.println("Enter array size: ");
+        int n = reader.nextInt();
+        int[][] userInput = new int[n][n];
+
+        System.out.println("Enter Array Elements:");
+        for (int[] userInput1 : userInput) {
+            for (int j = 0; j < userInput1.length; j++) {
+                int x = reader.nextInt();
+                userInput1[j] = x;
+            }
+        }
         reader.close();
 
-        obj.calculateDiagonalSum(n);
+        obj.calculateDiagonalSum(userInput);
     }
 }
