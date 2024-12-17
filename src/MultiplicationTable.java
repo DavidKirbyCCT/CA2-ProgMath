@@ -28,13 +28,22 @@ public class MultiplicationTable {
 
     public static void main(String[] args) {
         MultiplicationTable obj = new MultiplicationTable();
-        Scanner reader = new Scanner(System.in); 
+        Scanner reader = new Scanner(System.in);
 
-        System.out.println("Enter matrix size (n*n): ");
-        int n = reader.nextInt(); 
-        reader.close();
-
-        obj.createMultiplicationArray(n);
+        try {
+            System.out.println("Enter matrix size (n*n): ");
+            int n = reader.nextInt();
+            if (n <= 0) {
+                throw new IllegalArgumentException("Please enter a number greater than zero.");
+            }
+    
+            obj.createMultiplicationArray(n);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please enter a size greater than zero.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid array size.");
+        } finally {
+            reader.close();
+        }
     }
-
 }
