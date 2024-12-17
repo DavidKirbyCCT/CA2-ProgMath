@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DiagonalSum {
@@ -9,7 +10,6 @@ public class DiagonalSum {
         for (int i = 0; i < j; i++) {
             sum += arrayInput[i][i];
             sum += arrayInput[i][j - 1 - i];
-            System.out.println(sum);
         }
 
         if (j % 2 == 1) {
@@ -24,19 +24,37 @@ public class DiagonalSum {
         DiagonalSum obj = new DiagonalSum();
         Scanner reader = new Scanner(System.in);
 
-        System.out.println("Enter array size: ");
-        int n = reader.nextInt();
-        int[][] userInput = new int[n][n];
-
-        System.out.println("Enter Array Elements:");
-        for (int[] userInput1 : userInput) {
-            for (int j = 0; j < userInput1.length; j++) {
-                int x = reader.nextInt();
-                userInput1[j] = x;
+        try {
+            System.out.println("Enter single digit(n) for array size - n*n: ");
+            int n = reader.nextInt();
+            if (n <= 0) {
+                throw new IllegalArgumentException("Please enter a number greater than zero.");
             }
-        }
-        reader.close();
 
-        obj.calculateDiagonalSum(userInput);
+            int[][] userInput = new int[n][n];
+
+            System.out.println("Enter Array Elements:");
+            for (int[] userInput1 : userInput) {
+                for (int j = 0; j < userInput1.length; j++) {
+                    while (true) {
+                        try {
+                            userInput1[j] = reader.nextInt();
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("please enter a valid integer.");
+                            reader.next();
+                        }
+                    }
+                }
+            };
+
+            obj.calculateDiagonalSum(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please enter a size greater than zero.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid array size.");
+        } finally {
+            reader.close();
+        }
     }
 }
