@@ -54,7 +54,7 @@ public class BubbleSort {
                         break;
                     } catch (InputMismatchException e) {
                         System.out.println("please enter a valid integer.");
-                        reader.next();
+                        reader.nextInt();
                     }
                 }
             }

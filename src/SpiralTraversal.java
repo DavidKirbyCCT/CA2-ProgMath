@@ -49,17 +49,30 @@ public class SpiralTraversal {
         return traversalValues;
     }
 
-
     public static void main(String[] args) {
         SpiralTraversal obj = new SpiralTraversal();
         Scanner reader = new Scanner(System.in);
 
-        System.out.println("Enter row length: ");
-        int n = reader.nextInt();
-        System.out.println("Enter column length: ");
-        int n1 = reader.nextInt();
-        reader.close();
+        try {
+            System.out.println("Enter row length: ");   
+            int n = reader.nextInt();
+            if (n <= 1) {
+                throw new IllegalArgumentException("Please enter a number greater than 1.");
+            }
+            System.out.println("Enter column length: ");
+            int n1 = reader.nextInt();
+            if (n1 <= 1) {
+                throw new IllegalArgumentException("Please enter a number greater than 1.");
+            }
+    
+            obj.createTraversalArray(n, n1);
+        }catch (IllegalArgumentException e) {
+            System.out.println("Please enter a size greater than 1.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid array size.");
+        } finally {
+            reader.close();
+        }
 
-        obj.createTraversalArray(n, n1);
     }
 }

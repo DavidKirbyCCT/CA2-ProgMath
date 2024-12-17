@@ -36,7 +36,7 @@ public class MultiplicationTable {
             if (n <= 0) {
                 throw new IllegalArgumentException("Please enter a number greater than zero.");
             }
-    
+
             obj.createMultiplicationArray(n);
         } catch (IllegalArgumentException e) {
             System.out.println("Please enter a size greater than zero.");
