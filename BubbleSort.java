@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BubbleSort {
@@ -36,20 +37,37 @@ public class BubbleSort {
         BubbleSort obj = new BubbleSort();
         Scanner reader = new Scanner(System.in);
 
-        System.out.println("Enter array size: ");
-        int n = reader.nextInt();
-        int[] unsortedArray = new int[n];
+        try {
+            System.out.println("Enter array size: ");
+            int n = reader.nextInt();
+            if (n <= 0) {
+                throw new IllegalArgumentException("Please enter a number greater than zero.");
+            }
 
-        System.out.println("Enter Array Elements:");
-        for (int i = 0; i < unsortedArray.length; i++) {
-            int x = reader.nextInt();
-            unsortedArray[i] = x;
+            int[] unsortedArray = new int[n];
+    
+            System.out.println("Enter Array Elements:");
+            for (int i = 0; i < unsortedArray.length; i++) {
+                while (true) {
+                    try {
+                        unsortedArray[i] = reader.nextInt();
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("please enter a valid integer.");
+                        reader.next();
+                    }
+                }
+            }
+            
+            System.out.println(Arrays.toString(unsortedArray));
+            obj.bubbleSort(unsortedArray);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please enter a size greater than zero.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid array size.");
+        } finally {
+            reader.close();
         }
-
-        reader.close();
-        System.out.println(Arrays.toString(unsortedArray));
-
-        obj.bubbleSort(unsortedArray);
-    }
-
+    };
 }
