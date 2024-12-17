@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FirstRepeatedElement {
@@ -18,17 +19,36 @@ public class FirstRepeatedElement {
         FirstRepeatedElement obj = new FirstRepeatedElement();
         Scanner reader = new Scanner(System.in);
 
-        System.out.println("Enter array size: ");
-        int n = reader.nextInt();
-        int[] unsortedArray = new int[n];
+        try {
+            System.out.println("Enter array size: ");
+            int n = reader.nextInt();
+            if (n <= 0) {
+                throw new IllegalArgumentException("Please enter a number greater than zero.");
+            }
+            
+            int[] unsortedArray = new int[n];
 
-        System.out.println("Enter Array Elements:");
-        for (int i = 0; i < unsortedArray.length; i++) {
-            int x = reader.nextInt();
-            unsortedArray[i] = x;
+            System.out.println("Enter Array Elements:");
+            for (int i = 0; i < unsortedArray.length; i++) {
+                while (true) {
+                    try {
+                        unsortedArray[i] = reader.nextInt();
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("please enter a valid integer.");
+                        reader.next();
+                    }
+                }
+            }
+
+            System.out.println(obj.CheckRepeatedElement(unsortedArray));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please enter a size greater than zero.");
+        } catch (Exception e) {
+            System.out.println("Please enter a valid array size.");
+        } finally {
+            reader.close();
         }
-
-        System.out.println(obj.CheckRepeatedElement(unsortedArray));
 
     }
 }
