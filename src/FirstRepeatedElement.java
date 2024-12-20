@@ -2,6 +2,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FirstRepeatedElement {
+    // checks for the first repeated element in an array and if not found returns
+    // string
 
     public String CheckRepeatedElement(int[] input) {
         for (int i = 0; i < input.length; i++) {
@@ -25,7 +27,7 @@ public class FirstRepeatedElement {
             if (n <= 0) {
                 throw new IllegalArgumentException("Please enter a number greater than zero.");
             }
-            
+
             int[] unsortedArray = new int[n];
 
             System.out.println("Enter Array Elements:");

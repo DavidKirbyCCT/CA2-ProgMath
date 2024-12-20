@@ -14,7 +14,8 @@ public class DiagonalSum {
             sum += arrayInput[i][j - 1 - i];
         }
 
-        // If the matrix size is odd, subtract the middle element as it is counted twice in both diagonals
+        // If the matrix size is odd, subtract the middle element as it is counted twice
+        // in both diagonals
         if (j % 2 == 1) {
             sum -= arrayInput[j / 2][j / 2];
         }
@@ -34,7 +35,7 @@ public class DiagonalSum {
                 throw new IllegalArgumentException("Please enter a number greater than one.");
             }
 
-            int[][] userInput = new int[n][n]; // square array defined 
+            int[][] userInput = new int[n][n]; // square array defined
 
             System.out.println("Enter Array Elements:");
             for (int[] userInput1 : userInput) {
