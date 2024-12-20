@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SpiralTraversal {
-    public ArrayList createTraversalArray(int userInput1, int userInput2) {
+    // returns the spiral traversal values of a 2d Array 
+
+    public ArrayList<Integer> createTraversalArray(int userInput1, int userInput2) {
         int[][] traversalArray = new int[userInput1][userInput2];
         ArrayList<Integer> traversalValues = new ArrayList<>();
         int arrayValueCounter = 0;
@@ -15,29 +17,32 @@ public class SpiralTraversal {
             }
         }
 
-        int top = 0;
+        // boundary definitions
+        int top = 0; 
         int right = traversalArray[0].length - 1;
         int bottom = traversalArray.length - 1;
         int left = 0;
 
+        
         while (top <= bottom && left <= right) {
+            // top row left to right - TL -> TR 
             for (int i = left; i <= right; i++) {
                 traversalValues.add(traversalArray[top][i]);
             }
             top++;
-
+            // top row - TR -> BR 
             for (int i = top; i <= bottom; i++) {
                 traversalValues.add(traversalArray[i][right]);
             }
             right--;
-
+            // bottom row - BR <- BL
             if (top <= bottom) {
                 for (int i = right; i >= left; i--) {
                     traversalValues.add(traversalArray[bottom][i]);
                 }
                 bottom--;
             }
-
+            // Bottom row - BL <- TL
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
                     traversalValues.add(traversalArray[i][left]);
@@ -50,6 +55,8 @@ public class SpiralTraversal {
     }
 
     public static void main(String[] args) {
+        // https://github.com/DavidKirbyCCT/CA2-ProgMath
+
         SpiralTraversal obj = new SpiralTraversal();
         Scanner reader = new Scanner(System.in);
 

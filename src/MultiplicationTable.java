@@ -23,6 +23,8 @@ public class MultiplicationTable {
     }
 
     public static void main(String[] args) {
+        // https://github.com/DavidKirbyCCT/CA2-ProgMath
+        
         MultiplicationTable obj = new MultiplicationTable();
         Scanner reader = new Scanner(System.in);
 

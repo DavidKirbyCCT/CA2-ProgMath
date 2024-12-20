@@ -25,6 +25,8 @@ public class DiagonalSum {
     }
 
     public static void main(String[] args) {
+        // https://github.com/DavidKirbyCCT/CA2-ProgMath
+        
         DiagonalSum obj = new DiagonalSum();
         Scanner reader = new Scanner(System.in);
 

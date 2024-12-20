@@ -18,6 +18,8 @@ public class FirstRepeatedElement {
     };
 
     public static void main(String[] args) {
+      // https://github.com/DavidKirbyCCT/CA2-ProgMath
+      
         FirstRepeatedElement obj = new FirstRepeatedElement();
         Scanner reader = new Scanner(System.in);
 
