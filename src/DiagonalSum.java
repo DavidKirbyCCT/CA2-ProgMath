@@ -46,7 +46,7 @@ public class DiagonalSum {
                         }
                     }
                 }
-            };
+            }
 
             obj.calculateDiagonalSum(userInput);
         } catch (IllegalArgumentException e) {

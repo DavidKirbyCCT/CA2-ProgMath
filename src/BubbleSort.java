@@ -3,9 +3,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BubbleSort {
+    // Method to perform Bubble Sort on an array
+
     public int[] bubbleSort(int[] arr) {
-        int passes = 0;
-        boolean swapped;
+        int passes = 0; // tracks how many passes have been made over the full array 
+        boolean swapped; // tracks whether an element has been swapped in the array 
 
         for (int i = 0; i < arr.length - 1; i++) {
             swapped = false;
@@ -25,7 +27,7 @@ public class BubbleSort {
             System.out.println("bubblesort passes: " + passes);
 
             if (!swapped) {
-                break;
+                break;  // exits the loop if no swaps occur 
             }
 
         }
@@ -44,7 +46,7 @@ public class BubbleSort {
                 throw new IllegalArgumentException("Please enter a number greater than zero.");
             }
 
-            int[] unsortedArray = new int[n];
+            int[] unsortedArray = new int[n]; // initialise array with user defined size 
     
             System.out.println("Enter Array Elements:");
             for (int i = 0; i < unsortedArray.length; i++) {
